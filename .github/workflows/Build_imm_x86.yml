@@ -286,11 +286,18 @@ jobs:
         if [ "${UPLOAD_GOFILE}" = "true" ] && [ -n "${{ steps.gofile.outputs.url }}" ]; then
           echo "🔗 GoFile" >> release.txt
         fi
+        ROOTFS_SIZE=$(grep -h "^CONFIG_TARGET_ROOTFS_PARTSIZE=" ${{ env.FIRMWARE }}/config.buildinfo | awk -F'=' '{print $2}')
+        if [ -n "$ROOTFS_SIZE" ]; then
+          ROOTFS_LINE="  根分区大小: ${ROOTFS_SIZE}MB"
+        else
+          ROOTFS_LINE="  根分区大小: 未知"
+        fi
         echo "" >> release.txt
         {
           echo "## Generic x86/64 Immortalwrt"
           echo "- 管理地址: 192.168.1.1"
           echo "  内核版本: $(grep -h "^kernel - " ${{ env.FIRMWARE }}/*.manifest 2>/dev/null | awk -F' - ' '{print $2}' || echo '未知')"
+          echo "$ROOTFS_LINE"
           echo "  默认用户: root"
           echo "  默认密码: 空"
           echo ""
