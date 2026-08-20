@@ -19,5 +19,6 @@
 # Modify hostname
 #sed -i 's/OpenWrt/P3TERX-Router/g' package/base-files/files/bin/config_generate
 
+rm -rf "$GITHUB_WORKSPACE/openwrt/package/feeds/base/apk"
 cp -rf "$GITHUB_WORKSPACE/scripts/imm_x86/"* "$GITHUB_WORKSPACE/openwrt/"
 ls -R "$GITHUB_WORKSPACE/openwrt/files"
