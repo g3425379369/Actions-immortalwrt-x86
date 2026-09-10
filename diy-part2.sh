@@ -19,6 +19,14 @@
 # Modify hostname
 #sed -i 's/OpenWrt/P3TERX-Router/g' package/base-files/files/bin/config_generate
 
+git clone https://github.com/g3425379369/UA3F.git package/UA3F
+
+rm -rf package/feeds/packages/mosdns
+git clone https://github.com/sbwml/luci-app-mosdns.git package/mosdns
+
+rm -rf package/feeds/packages/v2ray-geodata
+git clone https://github.com/g3425379369/v2ray-geodata package/v2ray-geodata
+
 rm -rf "$GITHUB_WORKSPACE/openwrt/package/system/apk"
 cp -rf "$GITHUB_WORKSPACE/scripts/imm_x86/"* "$GITHUB_WORKSPACE/openwrt/"
 ls -R "$GITHUB_WORKSPACE/openwrt/files"
