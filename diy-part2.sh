@@ -19,6 +19,9 @@
 # Modify hostname
 #sed -i 's/OpenWrt/P3TERX-Router/g' package/base-files/files/bin/config_generate
 
+git clone https://github.com/gSpotx2f/luci-app-cpu-status.git package/luci-app-cpu-status
+git clone https://github.com/gSpotx2f/luci-app-temp-status.git package/luci-app-temp-status
+
 git clone https://github.com/g3425379369/UA3F.git package/UA3F
 
 rm -rf package/feeds/packages/mosdns
