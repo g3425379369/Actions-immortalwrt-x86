@@ -1,6 +1,5 @@
 # This file is auto-generated and build-specific, any changes will be intentionally lost in sysupgrade.
 # Add your custom feeds to /etc/apk/repositories.d/customfeeds.list
-https://immortalwrt.kyarucloud.moe/snapshots/targets/x86/64/packages/packages.adb
 https://immortalwrt.kyarucloud.moe/snapshots/packages/x86_64/base/packages.adb
 https://immortalwrt.kyarucloud.moe/snapshots/packages/x86_64/luci/packages.adb
 https://immortalwrt.kyarucloud.moe/snapshots/packages/x86_64/packages/packages.adb
