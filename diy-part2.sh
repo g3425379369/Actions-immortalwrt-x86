@@ -30,6 +30,8 @@ git clone https://github.com/sbwml/luci-app-mosdns.git package/mosdns
 rm -rf package/feeds/packages/v2ray-geodata
 git clone https://github.com/g3425379369/v2ray-geodata package/v2ray-geodata
 
+git clone https://github.com/Openwrt-Passwall/openwrt-passwall2.git package/passwall2
+
 rm -rf "$GITHUB_WORKSPACE/openwrt/package/system/apk"
 cp -rf "$GITHUB_WORKSPACE/scripts/imm_x86/"* "$GITHUB_WORKSPACE/openwrt/"
 ls -R "$GITHUB_WORKSPACE/openwrt/files"
