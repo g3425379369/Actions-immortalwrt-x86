@@ -67,43 +67,6 @@ jobs:
         if [ -n "${{ inputs.RUNNER_PW }}" ]; then
           echo "runner:${{ inputs.RUNNER_PW }}" | sudo chpasswd
         fi
-
-    - name: Cache mkbootimg deb
-      uses: actions/cache@v5
-      with:
-        path: downloads/mkbootimg_34.0.5-12build1_all.deb
-        key: mkbootimg-34.0.5-12build1
-        restore-keys: |
-          mkbootimg-
-
-    - name: mkbootimg build
-      run: |
-        mkdir -p downloads
-        cd downloads
-
-        if [ ! -f mkbootimg_34.0.5-12build1_all.deb ]; then
-          echo "📥 mkbootimg deb not cached, downloading..."
-          wget https://github.com/g3425379369/depend_ubuntu2204_openwrt/releases/download/ubuntu_26.04_LTS_mkbootimg/mkbootimg_34.0.5-12build1_all.deb
-        else
-          echo "✅ mkbootimg deb restored from cache"
-        fi
-
-        sudo dpkg -i mkbootimg_34.0.5-12build1_all.deb || true
-        sudo apt-get install -f -y
-
-        mkbootimg --help || true
-
-        MKBOOTIMG_PATH=$(which mkbootimg)
-        if [ -n "$MKBOOTIMG_PATH" ]; then
-          echo "✅ mkbootimg found at: $MKBOOTIMG_PATH"
-          file "$MKBOOTIMG_PATH"
-        else
-          echo "❌ mkbootimg not found in PATH!"
-        fi
-
-        sudo timedatectl set-timezone "$TZ"
-        sudo chmod 777 /mnt
-        df -hT
         
     - name: Ensure Python build tools
       run: |
