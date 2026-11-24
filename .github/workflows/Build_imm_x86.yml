@@ -171,12 +171,9 @@ jobs:
         echo -e "$(nproc) thread compile"
         
         (
-        make -j$(nproc) -k CC="ccache gcc" CXX="ccache g++" || make -j1 -k CC="ccache gcc" CXX="ccache g++" V=s
+        make -j$(nproc) -k || make -j1 -k V=s
         ) || if ss -tn | grep -q ':22 '; then true; else exit 1; fi 
         while ss -tn | grep -q ':22 '; do sleep 5; done
-
-        echo "✅ ccache 统计："
-        ccache -s
 
         echo "status=success" >> $GITHUB_OUTPUT
         echo "FILE_DATE=$(date +"%Y%m%d%H%M")" >> $GITHUB_ENV
